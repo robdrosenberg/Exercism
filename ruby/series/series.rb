@@ -4,19 +4,14 @@ class Series
   end
 
   def slices(size)
+    raise ArgumentError, 'Size exceeds array length' if size > @numbers.length
     sliced = []
-
-    # @numbers.each_char do |char|
-    #   if sliced[-1].length < size
-    #     # if sliced[-1]
-    #     #   sliced << char
-    #     # else
-    #     sliced[-1].concat(char)
-    #     # end
-    #   else
-    #     sliced << char
-    #   end
-    # end
+    (0..@numbers.length-size).each do |i|
+      sliced << ""
+      (i..(i+size-1)).each do |k|
+        sliced[-1] += @numbers[k]
+      end
+    end
     sliced
   end
 
