@@ -4,19 +4,11 @@ class Squares
   end
 
   def square_of_sum
-    sum = 0
-    (1..@end_number).each do |num|
-      sum += num
-    end
-    sum**2
+    (1..@end_number).reduce(:+)**2
   end
 
   def sum_of_squares
-    sum = 0
-    (1..@end_number).each do |num|
-      sum += num**2
-    end
-    sum
+    (1..@end_number).inject{ |sum, n| sum + n**2}
   end
 
   def difference
@@ -26,4 +18,4 @@ end
 
 module BookKeeping
     VERSION = 4 # Where the version number matches the one in the test.
-  end
+end
